@@ -1,12 +1,11 @@
 # Тестовое задание "Офис"
 
 Основные функции
-1. Страницы сайта
 1.	Страница импорта товаров:
 	- Кнопка для загрузки и импорта Excel файла.
 	- Парсинг файла и заполнение базы данных.
 	- Страница отображения товаров:
- 	- Отображение всех товаров из базы данных.
+	- Отображение всех товаров из базы данных.
 2. Структура базы данных
  	-	Таблица товары:
 		- product_id - идентификатор товара.
@@ -34,12 +33,14 @@
 5. Страница отображения товаров
 	- Разработка страницы для просмотра результатов импорта.
 	- Возможность добавления стилей для улучшения визуального представления.
-Дополнительные замечания
+6. Дополнительные замечания
 	- Возможность доработки и добавления новых функций по мере необходимости.
 
 # Tasks
 
-- [ ] Table `products`
+- [x] Table `products`
+- [ ] Table `characteristics`
+- [ ] Relations in model
 
 # Что делал
 
@@ -94,6 +95,42 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('products');
+    }
+};
+```
+
+> Вторая миграция
+```bash
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('characteristics', function (Blueprint $table) {
+            $table->id();
+            /*-----------------Foreign key---------------*/
+            $table->integer('product_id')->comment("Внешний ключ для связи с таблицей products");
+            $table->index('product_id', 'product_characteristic_idx');
+            $table->foreign('product_id', 'product_characteristic_fk')->references('product_id')->on('products')->onDelete('cascade')->onUpdate('cascade');
+            /*-------------------------------------------*/
+            $table->string('key')->comment("Ключ характеристики");
+            $table->string('value')->comment("Значение характеристики");
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('characteristics');
     }
 };
 ```
