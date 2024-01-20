@@ -39,9 +39,9 @@
 # Tasks
 
 - [x] Table `products`
-- [ ] Table `characteristics`
+- [x] Table `characteristics`
 - [ ] Relations in model
-- [ ] Table `photo`
+- [x] Table `photo`
 
 # Что делал
 
