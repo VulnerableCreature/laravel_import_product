@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_photo_products', function (Blueprint $table) {
+        Schema::create('photo_products', function (Blueprint $table) {
             $table->id();
             /*-----------------Foreign key---------------*/
             $table->integer('product_id')->comment("Внешний ключ для связи с таблицей products");

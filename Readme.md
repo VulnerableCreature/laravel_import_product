@@ -41,6 +41,7 @@
 - [x] Table `products`
 - [ ] Table `characteristics`
 - [ ] Relations in model
+- [ ] Table `photo`
 
 # Что делал
 
