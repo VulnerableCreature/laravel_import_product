@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  postgresql_service:
+    image: postgres:15.4
+    env_file:
+      - ./docker/env/pgsql.env
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./docker/pgsql:/var/lib/postgresql/data
+    restart: unless-stopped
