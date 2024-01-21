@@ -42,25 +42,36 @@ class ProductImport implements ToModel, WithEvents, WithHeadingRow
     // Колонки: Категории, Бренд, Фото, - - Характеристики в формате k, v.
     public function model(array $row): Product
     {
-        return new Product([
+        //tip
+        //gruppy
+        /** @var Product $product */
+        $product = Product::query()->create([
             // Название товара
             'name' => $row['naimenovanie'],
             // Внешний код
             'external_code' => $row['vnesnii_kod'],
             // EAN13
-            'barcode_ean_thirteen' => $row['strixkod_ean13'] || null,
+            'barcode_ean_thirteen' => $row['strixkod_ean13'],
             // EAN8
-            'barcode_ean_eight' => $row['strixkod_ean8'] || null,
+            'barcode_ean_eight' => $row['strixkod_ean8'],
             // Code128
-            'barcode_code' => $row['strixkod_code128'] || null,
+            'barcode_code' => $row['strixkod_code128'],
             // UPC
-            'barcode_ean_upc' => $row['strixkod_upc'] || null,
+            'barcode_ean_upc' => $row['strixkod_upc'],
             // GTIN
-            'barcode_ean_gtin' => $row['strixkod_gtin'] || null,
+            'barcode_ean_gtin' => $row['strixkod_gtin'],
             // Description
             'description' => $row['opisanie'],
             //price
             'price' => $row['cena_cena_prodazi'],
         ]);
+
+//        $photos = explode(';', $row['dop_pole_ssylki_na_foto']);
+//
+//        $product->characteristics()->attach($photos);
+
+        // TODO: Подумать над сохранением фотографий, модель
+
+        return $product;
     }
 }
