@@ -14,12 +14,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id('product_id')->comment("ID продукта");
-            $table->text('name')->comment("Название товара");
-            $table->float('price', 5, 2)->comment("Цена товара");
-            $table->integer('discount')->comment("Скидка на товар");
+            $table->id()->comment("ID продукта");
+            $table->text('name')->nullable()->comment("Название товара");
+            $table->text('price')->nullable()->comment("Цена товара");
+            $table->text('discount')->nullable()->comment("Скидка на товар");
             $table->text('description')->nullable()->comment("Описание товара [необязательно]");
-            $table->string('type')->comment("Тип товара");
+            $table->string('type')->nullable()->comment("Тип товара");
             $table->string('external_code', 130)->comment("Внешний код продукта");
             /* -------------------------------------Штрихкод------------------- */
             $table->integer('barcode_ean_thirteen')->nullable()->comment("Штрихкод EAN13 integer");

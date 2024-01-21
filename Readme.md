@@ -181,3 +181,8 @@ return new class extends Migration
 composer require maatwebsite/excel
 ```
 
+### Обработка пустых ячеек
+
+Нашел интересный Event который работает ДО импорта `BeforeImport` по идее с помощью него можно обработать пустые ячейки
+
+Также нашёл функцию для регистрации этого события ` public function registerEvents(): array` 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Str;
 
 /* Класс продукта представляет модель для продуктов в базе данных. */
 
@@ -15,7 +16,7 @@ class Product extends Model
     protected $table = 'products';
 
     protected $fillable = [
-        'product_id',
+        'id',
         'name',
         'price',
         'discount',
@@ -24,7 +25,7 @@ class Product extends Model
         'external_code',
         'barcode_ean_thirteen',
         'barcode_ean_eight',
-        'barcode_code',
+        'barcode_code', // Code128
         'barcode_ean_upc',
         'barcode_ean_gtin',
         'additional_features',
@@ -32,6 +33,11 @@ class Product extends Model
 
     public function characteristics(): BelongsToMany
     {
-        return $this->belongsToMany(Characteristic::class, 'characteristics', 'product_id');
+        return $this->belongsToMany(Characteristic::class, 'characteristics');
+    }
+
+    public function getFirstLetterDescriptionAttribute(): string
+    {
+        return Str::words($this->description, 10);
     }
 }
