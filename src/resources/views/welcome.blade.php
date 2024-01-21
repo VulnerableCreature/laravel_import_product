@@ -17,7 +17,7 @@
 <body>
 <header class="container mx-auto">
     <div class="max-w-full h-20 py-4 px-8 flex items-center justify-center gap-8">
-        <a href="#" class="py-2 px-8 bg-red-400 rounded-md font-medium hover:bg-red-600 transition ease-linear">Импорт</a>
+        <a href="{{ route('import') }}" class="py-2 px-8 bg-red-400 rounded-md font-medium hover:bg-red-600 transition ease-linear">Импорт</a>
         <a href="#" class="py-2 px-8 bg-red-400 rounded-md font-medium hover:bg-red-600 transition ease-linear">Экспорт</a>
     </div>
 </header>
@@ -31,7 +31,7 @@
                     elit.</p>
                 <div class="mt-4 flex items-center justify-between">
                     <span class="text-xl font-bold text-gray-800">$29.99</span>
-                    <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-md">Перейти к товару</a>
+                    <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700">Перейти к товару</a>
                 </div>
             </div>
         </div>

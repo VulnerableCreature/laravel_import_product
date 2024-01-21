@@ -170,3 +170,14 @@ return new class extends Migration
     }
 };
 ```
+
+## Форма импорта файла
+
+> Важно! Добавить аттрибут к форме `enctype="multipart/form-data"` - забыл!
+
+## Laravel-excel
+
+```bash
+composer require maatwebsite/excel
+```
+
