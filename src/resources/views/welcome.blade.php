@@ -36,7 +36,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         @forelse($products as $product)
             <div class="bg-white shadow-md rounded-md overflow-hidden">
-                <img src="http://catalog.collant.ru/pics/SNL-504038_m.jpg" alt="Product 2"
+                <img src="{{ url($product->photos()->first()?->path) }}" alt="Product 2"
                      class="w-full h-32 object-cover">
                 <div class="p-8">
                     <h2 class="text-lg font-semibold mb-2">{{ $product->name }}</h2>

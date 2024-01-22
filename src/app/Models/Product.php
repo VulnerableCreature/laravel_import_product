@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
@@ -32,9 +33,14 @@ class Product extends Model
         'additional_features',
     ];
 
-    public function characteristics(): BelongsToMany
+    public function characteristics(): BelongsTo
     {
-        return $this->belongsToMany(Characteristic::class, 'characteristics');
+        return $this->belongsTo(Characteristic::class, 'product_id', 'id');
+    }
+
+    public function photos(): HasMany
+    {
+        return $this->hasMany(PhotoProduct::class, 'product_id', 'id');
     }
 
     public function getFirstLetterDescriptionAttribute(): string

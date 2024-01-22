@@ -2,6 +2,7 @@
 
 namespace App\Imports\Product;
 
+use App\Models\Characteristic;
 use App\Models\PhotoProduct;
 use App\Models\Product;
 use Maatwebsite\Excel\Concerns\ToModel;
@@ -69,7 +70,6 @@ class ProductImport implements ToModel, WithEvents, WithHeadingRow
         ]);
 
         $product_id = $product->id;
-        //dd($product_id);
 
         $photos = explode(', ', $row['dop_pole_ssylki_na_foto']);
         foreach ($photos as $photo){
@@ -78,10 +78,8 @@ class ProductImport implements ToModel, WithEvents, WithHeadingRow
                 'path' => $photo,
             ]);
         }
-//
-//        $product->characteristics()->attach($photos);
 
-        // TODO: Подумать над сохранением фотографий, модель
+        Characteristic::query()->create(['product_id' => $product_id, 'key' => $row['tip'], 'value' => $row['gruppy']]);
 
         return $product;
     }

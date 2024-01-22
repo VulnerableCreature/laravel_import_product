@@ -24,10 +24,16 @@
         <div class="flex flex-wrap mb-24 -mx-4">
             <div class="w-full px-4 mb-8 md:w-1/2 md:mb-0">
                 <div class="sticky top-0 overflow-hidden ">
+                    @forelse($photos as $photo)
                     <div class="relative mb-6 lg:mb-10 lg:h-96">
+{{--                        <img class="object-contain w-full lg:h-full"--}}
+{{--                             src="https://i.postimg.cc/0jwyVgqz/Microprocessor1-removebg-preview.png" alt="">--}}
                         <img class="object-contain w-full lg:h-full"
-                             src="https://i.postimg.cc/0jwyVgqz/Microprocessor1-removebg-preview.png" alt="">
+                             src="{{ url($photo->path) }}" alt="">
                     </div>
+                        @empty
+                    <p>Photo not found</p>
+                    @endforelse
                 </div>
             </div>
             <div class="w-full px-4 md:w-1/2">
