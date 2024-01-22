@@ -20,7 +20,6 @@
         <div class="max-w-full h-20 py-4 px-8 flex items-center justify-center gap-8">
             <a href="{{ route('import') }}"
                class="py-2 px-8 bg-red-400 rounded-md font-medium hover:bg-red-600 transition ease-linear">Импорт</a>
-            <a href="#" class="py-2 px-8 bg-red-400 rounded-md font-medium hover:bg-red-600 transition ease-linear">Экспорт</a>
         </div>
     </header>
     @if(session('success'))

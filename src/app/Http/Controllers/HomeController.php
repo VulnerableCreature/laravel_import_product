@@ -15,6 +15,6 @@ class HomeController extends Controller
 
     public function import(): View
     {
-        return view('import');
+        return view('import.import');
     }
 }
