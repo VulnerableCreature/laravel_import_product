@@ -1,3 +1,24 @@
+# Запуск приложения
+
+> 1. Установка пакетов
+```bash
+composer instll
+```
+
+> 2. Установка npm package
+```bash
+npm install 
+```
+
+> 3. Стартуем базу данных
+```bash
+docker-compose up -d 
+```
+> 4. Open browser 
+```bash 
+http://127.0.0.1:8000
+```
+
 # Тестовое задание "Офис"
 
 Основные функции
