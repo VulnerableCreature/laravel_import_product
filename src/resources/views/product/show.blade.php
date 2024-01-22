@@ -61,7 +61,6 @@
                 </div>
                 <div class="lg:pl-20">
                     <a href="{{ route('index') }}" class="p-4 bg-blue-500 text-white rounded-md">Вернуться к товарам</a>
-                    <a href="{{ route('product.edit', $product->id) }}" class="p-4 bg-blue-500 text-white rounded-md">Редактировать</a>
                 </div>
             </div>
         </div>
