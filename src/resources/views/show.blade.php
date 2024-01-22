@@ -50,7 +50,14 @@
                         <span class="text-2xl font-semibold text-black">Описание</span>
                         <p class="mt-2 text-md text-dark">{{ $product->description }}</p>
                     </div>
-                    <div class="mb-6 "></div>
+                    <div class="py-6 mb-6">
+                        <span class="text-2xl font-semibold text-black">Характеристики</span>
+                        @forelse($characteristics as $characteristic)
+                            <p class="mt-2 text-md text-dark">{{ $characteristic->key }}, {{ $characteristic->value }}</p>
+                            @empty
+                            <p class="mt-2 text-md text-dark">Характеристики отсутствуют</p>
+                        @endforelse
+                    </div>
                 </div>
                 <div class="lg:pl-20">
                     <a href="{{ route('index') }}" class="p-4 bg-blue-500 text-white rounded-md">Вернуться к товарам</a>

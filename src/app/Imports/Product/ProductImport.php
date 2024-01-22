@@ -5,12 +5,13 @@ namespace App\Imports\Product;
 use App\Models\Characteristic;
 use App\Models\PhotoProduct;
 use App\Models\Product;
+use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Events\BeforeImport;
-
-class ProductImport implements ToModel, WithEvents, WithHeadingRow
+class ProductImport implements ToModel, WithEvents, WithHeadingRow, WithValidation
 {
     public function registerEvents(): array
     {
@@ -41,7 +42,17 @@ class ProductImport implements ToModel, WithEvents, WithHeadingRow
         ];
     }
 
-    // Колонки: Категории, Бренд, Фото, - - Характеристики в формате k, v.
+    public function rules(): array
+    {
+        return [
+            'vnesnii_kod' => [
+                'required',
+                Rule::unique('products', 'external_code')
+            ]
+        ];
+    }
+
+    // Колонки: Категории, Бренд.
     public function model(array $row): Product
     {
         //tip
@@ -71,14 +82,16 @@ class ProductImport implements ToModel, WithEvents, WithHeadingRow
 
         $product_id = $product->id;
 
+        // Фото
         $photos = explode(', ', $row['dop_pole_ssylki_na_foto']);
-        foreach ($photos as $photo){
+        foreach ($photos as $photo) {
             PhotoProduct::query()->create([
                 'product_id' => $product_id,
                 'path' => $photo,
             ]);
         }
 
+        // Характеристики в формате k, v
         Characteristic::query()->create(['product_id' => $product_id, 'key' => $row['tip'], 'value' => $row['gruppy']]);
 
         return $product;

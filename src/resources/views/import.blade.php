@@ -22,6 +22,12 @@
     </div>
 </header>
 <div class="container mx-auto py-5">
+    @if(session('exist_row'))
+    <div
+        class="mt-3 mb-3 bg-red-500 opacity-95 p-3 border border-red-900 text-opacity-0 text-center font-semibold rounded-lg">
+        {{ session('exist_row') }}
+    </div>
+    @endif
     <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3 flex items-center gap-6">

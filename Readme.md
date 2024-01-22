@@ -40,8 +40,17 @@
 
 - [x] Table `products`
 - [x] Table `characteristics`
+- [x] Models
 - [x] Relations in model
 - [x] Table `photo`
+- [x] Импорт товаров
+- [x] Обработка до 5 пустых ячеек
+- [x] Сохранение фото, привязка к товару
+- [x] Сохранение характеристик, привязка к товару
+- [x] Вывод всех товаров
+- [x] Страница импорта
+- [x] Просмотр детальной информации о товаре
+- [x] Импорт новых товаров с учетом их уникальности по внешнему коду и магазину
 
 # Что делал
 
@@ -186,3 +195,7 @@ composer require maatwebsite/excel
 Нашел интересный Event который работает ДО импорта `BeforeImport` по идее с помощью него можно обработать пустые ячейки
 
 Также нашёл функцию для регистрации этого события ` public function registerEvents(): array` 
+
+### Documentation
+
+Для получения общего количества строк в excel необходимо использовать метод `getReader()`. [Link](https://stackoverflow.com/questions/57942366/laravel-excel-get-total-number-of-rows-before-import)

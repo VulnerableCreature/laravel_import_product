@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
 
 /* Класс продукта представляет модель для продуктов в базе данных. */
@@ -33,9 +34,9 @@ class Product extends Model
         'additional_features',
     ];
 
-    public function characteristics(): BelongsTo
+    public function characteristics(): HasMany
     {
-        return $this->belongsTo(Characteristic::class, 'product_id', 'id');
+        return $this->hasMany(Characteristic::class, 'product_id', 'id');
     }
 
     public function photos(): HasMany
