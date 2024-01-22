@@ -34,7 +34,6 @@ class ProductImport implements ToModel, WithEvents, WithHeadingRow, WithValidati
 
                         if ($emptyCellCount >= 5) {
                             session(['count' => "В файле обнаружено $emptyCellCount пустых ячеек. Пожалуйста исправьте это!"]);
-                            //throw ValidationException::withMessages(['import_file' => 'В файле обнаружены пустые ячейки! Удалите их и попробуйте сделать импорт снова']);
                         }
                     }
                 }
@@ -55,9 +54,6 @@ class ProductImport implements ToModel, WithEvents, WithHeadingRow, WithValidati
     // Колонки: Категории, Бренд.
     public function model(array $row): Product
     {
-        //tip
-        //gruppy
-
         /** @var Product $product */
         $product = Product::query()->create([
             // Название товара
