@@ -26,8 +26,6 @@
                 <div class="sticky top-0 overflow-hidden ">
                     @forelse($photos as $photo)
                     <div class="relative mb-6 lg:mb-10 lg:h-96">
-{{--                        <img class="object-contain w-full lg:h-full"--}}
-{{--                             src="https://i.postimg.cc/0jwyVgqz/Microprocessor1-removebg-preview.png" alt="">--}}
                         <img class="object-contain w-full lg:h-full"
                              src="{{ url($photo->path) }}" alt="">
                     </div>

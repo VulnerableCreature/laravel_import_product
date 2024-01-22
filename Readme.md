@@ -5,16 +5,21 @@
 composer instll
 ```
 
-> 2. Установка npm package
+> 2. Генерация ключа
+```bash
+php artisan key:generate 
+```
+
+> 3. Установка npm package
 ```bash
 npm install 
 ```
 
-> 3. Стартуем базу данных
+> 4. Стартуем базу данных
 ```bash
 docker-compose up -d 
 ```
-> 4. Open browser 
+> 5. Open browser 
 ```bash 
 http://127.0.0.1:8000
 ```
