@@ -2,6 +2,7 @@
 
 namespace App\Imports\Product;
 
+use App\Models\PhotoProduct;
 use App\Models\Product;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithEvents;
@@ -44,6 +45,7 @@ class ProductImport implements ToModel, WithEvents, WithHeadingRow
     {
         //tip
         //gruppy
+
         /** @var Product $product */
         $product = Product::query()->create([
             // Название товара
@@ -66,7 +68,16 @@ class ProductImport implements ToModel, WithEvents, WithHeadingRow
             'price' => $row['cena_cena_prodazi'],
         ]);
 
-//        $photos = explode(';', $row['dop_pole_ssylki_na_foto']);
+        $product_id = $product->id;
+        //dd($product_id);
+
+        $photos = explode(', ', $row['dop_pole_ssylki_na_foto']);
+        foreach ($photos as $photo){
+            PhotoProduct::query()->create([
+                'product_id' => $product_id,
+                'path' => $photo,
+            ]);
+        }
 //
 //        $product->characteristics()->attach($photos);
 
